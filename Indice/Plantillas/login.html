@@ -10,15 +10,11 @@
             </h1>
             <form action="" method="post">
                 {% csrf_token %}
-                <table>
-                    {{form.as_table}}
-                </table>
-                <button>
-                    Aceptar
-                </button>
+                {{form.as_p}}
+
+                <button>Aceptar</button>
             </form>
 
-        </div>
     </div>
 </section>
 {% endblock contenido %}
