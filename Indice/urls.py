@@ -1,15 +1,13 @@
-from django.urls import path
+from django.urls import path,include
 from . import views
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LogoutView
+
 
 urlpatterns = [
-    
+    path('', include("Cuentas.urls")),
     path('', views.Inicio, name="index"),
-    path('about_us/', views.AboutUs, name="about_us"),
-    path('blog/', views.Blog, name="blog"),
-    path('register/', views.Register, name="register"),
-    path('login/', views.Login, name='login'),
-    path('logout/', LoginView.as_view(template_name="index.html"), name='logout'),
-    
+    path('about_us/', views.AboutUs.as_view(), name="about_us"),
+    path('blog/',views.Blog.as_view(), name="blog"),
+    path('logout/', LogoutView.as_view(template_name="index.html"), name='logout'),
 ]
  

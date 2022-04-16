@@ -1,4 +1,4 @@
-{% extends 'index.html' %}
+{% extends 'Indice/Plantillas/index.html' %}
 
 {% block contenido %}
 <section class="py-5">
@@ -6,15 +6,17 @@
         <div class="col-lg-6">
             
             <h1>
-                Login
+                Register
             </h1>
             <form action="" method="post">
                 {% csrf_token %}
                 {{form.as_p}}
-
-                <button>Aceptar</button>
+                <button>
+                    Register
+                </button>
             </form>
 
+        </div>
     </div>
 </section>
-{% endblock contenido %}
+{% endblock contenido %} 
