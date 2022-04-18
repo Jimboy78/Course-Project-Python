@@ -5,17 +5,16 @@
     <div class="container my-5">
         <div class="col-lg-6">
             
-            <h1>
-                Register
-            </h1>
+            <h1>Editar User</h1>
+
             <form action="" method="post">
                 {% csrf_token %}
                 <table>
-                    {{form.as_p}}
+                {{form.as_table}}
                 </table>
-
-
-                <button>Register</button>
+                <button>
+                    Guardar
+                </button>
             </form>
 
         </div>
