@@ -33,6 +33,7 @@
                         {% if request.user.is_authenticated %}
                             <li class="nav-item"><a class="nav-link" href={% url 'logout'%}>Logout </a></li>
                             <li class="nav-item"><a class="nav-link" href={% url 'editar'%}>Editar perfil</a></li>
+                            <li class="nav-item"><a class="nav-link" href={% url 'formulario_post'%}>Subir post</a></li>
                         {% else %}
                             <li class="nav-item"><a class="nav-link" href={% url 'login'%}>Login </a></li>
                             <li class="nav-item"><a class="nav-link" href={% url 'register'%}>Register</a></li>
