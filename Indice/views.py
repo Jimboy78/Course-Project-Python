@@ -1,20 +1,21 @@
-from django.shortcuts import render
+#from msilib.schema import ListView
+from django.shortcuts import redirect, render
+#from django.contrib.auth import login, authenticate
+#from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import TemplateView
 
-# Create your views here.
-    
 def Inicio (request): 
+    return render(request, "Indice/Plantillas/index.html") 
 
-    return render(request, "index.html", {})
 
-def AboutUs (request): 
+class AboutUs (LoginRequiredMixin,TemplateView): 
+    template_name = 'Indice/Plantillas/about_us.html'
 
-    return render(request, "about_us.html", {})
-def Blog (request): 
 
-    return render(request, "blog.html", {})
-def Register (request): 
 
-    return render(request, "register.html", {})
-def Login (request): 
+class Blog (LoginRequiredMixin,TemplateView):
+    template_name = 'Indice/Plantillas/blog.html'
 
-    return render(request, "login.html", {})
+    
