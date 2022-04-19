@@ -39,7 +39,8 @@ def Login (request):
 
             if user is not  None:
                 login(request, user)
-                return render(request, "Indice/Plantillas/index.html", {'msj':'Te re logeaste'})
+                usuario = form.cleaned_data['username']
+                return render(request, "Indice/Plantillas/index.html", {'msj':f'Bienvenido {usuario}!'})
             else:
                 return render(request, 'Cuentas/Plantillas/login.html', {'form':form},)
 

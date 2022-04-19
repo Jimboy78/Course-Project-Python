@@ -1,0 +1,23 @@
+{% extends "Indice/Plantillas/blog.html" %}
+
+{% block contenido %}
+<ul>
+  <div class="row">
+      <div class="col-lg-8">
+          <div class="card mb-6">
+              <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+              <div class="card-body">
+
+                  <div class="small text-muted">Fecha del post</div>
+                  <h2 class="card-title">{{post.titulo}}</h2>
+                  <p class="card-text">{{post.subtitulo}}</p>
+                  <p class="card-text">{{post.texto}}</p>
+                  <p class="card-text">{{post.autor}}</p>
+
+                  
+              </div>
+          </div>
+      </div>
+  </div>
+</ul>
+{% endblock contenido %}
