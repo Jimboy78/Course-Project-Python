@@ -4,6 +4,8 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from .form import form_register, form_edit_user
+
+
 from .models import NuestroUser
 
 
@@ -81,7 +83,7 @@ def Editar (request):
             logued_user.save()
             usuario_extendido.save()
 
-            return render(request, "Indice/Plantillas/index.html", {'msj':msj, 'user_avatar':Buscar_Url_Avatar(request.user)})
+            return render(request, "Cuentas/Plantillas/perfil_user.html", {'msj':msj, 'user_avatar':Buscar_Url_Avatar(request.user)})
         else:
             return render(request, "Cuentas/Plantillas/editar_user.html", {'form':form, 'msj':'', 'user_avatar':Buscar_Url_Avatar(request.user)})
 
@@ -99,8 +101,19 @@ def Editar (request):
     return render(request, "Cuentas/Plantillas/editar_user.html", {'form':form, 'msj':'', 'user_avatar':Buscar_Url_Avatar(request.user)})
 
 
+def Perfil(request):
+    mas_datos, _ = NuestroUser.objects.get_or_create(user=request.user)
+    return render(request, "Cuentas/Plantillas/perfil_user.html", {'mas_datos':mas_datos ,'user_avatar':Buscar_Url_Avatar(request.user)})
+
+
+
 
 
 def Buscar_Url_Avatar(user):
-    return NuestroUser.objects.filter(user=user)[0].imagen.url
+    if user.is_authenticated:
+        return NuestroUser.objects.filter(user=user)[0].imagen.url
+    else:
+        return 
+    
+
   

@@ -1,18 +1,17 @@
 {% extends "Indice/Plantillas/blog.html" %}
 
 {% block posts %}
+
 {% for post in posts %}
 
-    {% if  post.titulo is not None %}    
-
-        <ul>
+    <ul>
         <div class="row">
             <div class="col-lg-8">
                 <div class="card mb-6">
                     {% if post.imagen %}
                     <img class="card-img-top" src="{{post.imagen.url}}"alt="" object-fit="contain" >
                     {% else %}
-                    <img class="card-img-top" src="https://pescadata-images.s3.us-west-1.amazonaws.com/1642026639704no-image.png" alt="..." object-fit="contain" >
+                    <img class="card-img-top" src="https://pescadata-images.s3.us-west-1.amazonaws.com/1642026639704no-image.png" alt="..." object-fit="contain" />
                     {% endif %}
                     <div class="card-body">
                         <div class="small text-muted">{{post.fecha}}</div>
@@ -25,22 +24,11 @@
                         {% endif %}
                         
                     </div>
-                    
                 </div>
             </div>
         </div>
-        </ul>
-    {% else %}
-        <ul>
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="card mb-6">
-                        <h2>No hay posts</h2>
-                    </div>
-                </div>
-            </div>
-        </ul>
-    {% endif %}
-
+    </ul>
+    
 {% endfor %}
+
 {% endblock posts %}
