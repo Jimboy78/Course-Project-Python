@@ -13,17 +13,13 @@ class form_register(UserCreationForm):
         help_texts = {k: '' for k in fields}
 
 
-
-
 class form_edit_user(forms.Form):
 
-    username = forms.CharField()
     email = forms.EmailField()
     password1 = forms.CharField(label='Contraseña', widget= forms.PasswordInput(), required=False)
     password2 = forms.CharField(label='Repetir contraseña', widget= forms.PasswordInput(), required=False)
     first_name = forms.CharField(label="Nombre", max_length=20, required=False)
     last_name = forms.CharField(label="Apellido", max_length=20)
-    #  class Meta:
-    #      model = User
-    #     fields = ['username', 'first_name', 'last_name','email', 'password1', 'password2']
-    #    help_texts = {k: '' for k in fields}
+    imagen = forms.ImageField(label="Avatar", required=False)
+    bio = forms.CharField(label="Biografia", max_length=150, required=False)
+    link = forms.URLField(label="Link", required=False)

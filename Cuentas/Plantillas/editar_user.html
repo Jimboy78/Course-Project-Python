@@ -5,9 +5,9 @@
     <div class="container my-5">
         <div class="col-lg-6">
             
-            <h1>Editar User</h1>
+            <h1>Editar perfil</h1>
 
-            <form action="" method="post">
+            <form action="" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <table>
                 {{form.as_table}}

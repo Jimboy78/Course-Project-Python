@@ -15,6 +15,7 @@
         <link href= {% static 'blog/css/styles.css' %} rel="stylesheet"  />
         {% endblock head %}
     </head>
+    
     <body>
         
         <!-- Page header with logo and tagline-->
@@ -40,12 +41,13 @@
                         <div class="row">
                             <div class="col-lg-8">
                                 <div class="card mb-6">
-                                    <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                                    {% if post.imagen %}
+                                    <img class="card-img-top" src="{{post.imagen.url}}"alt="" object-fit="contain" >
+                                    {% else %}
+                                    <img class="card-img-top" src="https://pescadata-images.s3.us-west-1.amazonaws.com/1642026639704no-image.png" alt="..." object-fit="contain" >
+                                    {% endif %}
                                     <div class="card-body">
-
-
-
-                                        <div class="small text-muted">Fecha del post</div>
+                                        <div class="small text-muted">{{post.fecha}}</div>
                                         <h2 class="card-title">{{post.titulo}}</h2>
                                         <p class="card-text">{{post.subtitulo}}</p>
                                         <p class="card-text">{{post.autor}}</p>

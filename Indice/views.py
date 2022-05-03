@@ -1,23 +1,21 @@
-#from msilib.schema import ListView
-from urllib import request
-from django.shortcuts import redirect, render
-#from django.contrib.auth import login, authenticate
-#from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import TemplateView
-from Posts.forms import Formulario_post
+from Cuentas.views import Buscar_Url_Avatar
 from Posts.models import Post
 
+
 def Inicio (request): 
-    return render(request, "Indice/Plantillas/index.html") 
+    if request.user.is_authenticated:
+        return render(request, "Indice/Plantillas/index.html",{'user_avatar':Buscar_Url_Avatar(request.user)}) 
+    else:
+        return render(request, "Indice/Plantillas/index.html")
 
-
-class AboutUs (LoginRequiredMixin,TemplateView): 
-    template_name = 'Indice/Plantillas/about_us.html'
+@login_required
+def AboutUs (request): 
+    return render (request,'Indice/Plantillas/about_us.html',{'user_avatar':Buscar_Url_Avatar(request.user)})
 
 
 @login_required
 def Blog (request):
     posts = Post.objects.all()
-    return render(request, "Indice/Plantillas/blog.html", {'posts': posts}) 
+    return render(request, "Indice/Plantillas/blog.html",{'posts': posts, 'user_avatar':Buscar_Url_Avatar(request.user)}) 
