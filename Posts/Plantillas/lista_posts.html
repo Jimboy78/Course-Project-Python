@@ -1,7 +1,7 @@
 {% extends "Indice/Plantillas/blog.html" %}
 
 {% block posts %}
-
+{% if posts %}
 {% for post in posts %}
 
     <ul>
@@ -28,7 +28,8 @@
             </div>
         </div>
     </ul>
-    
-{% endfor %}
-
+    {% endfor %}
+    {% else %}
+    <h3>No se encontraron posts :( </h3>
+{% endif %}
 {% endblock posts %}

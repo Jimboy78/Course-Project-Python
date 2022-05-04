@@ -5,11 +5,12 @@ from django.views.generic import  DetailView
 from django.views.generic.edit import DeleteView
 from .forms import Formulario_post,Buscar_post
 from .models import Post
-from Cuentas.views import Buscar_Url_Avatar
+from Cuentas.views import buscar_url_avatar
+
 
 
 @login_required
-def Formulario_posteo(request):
+def formulario_posteo(request):
     if request.method == 'POST':
         form = Formulario_post(request.POST, files=request.FILES)
 
@@ -18,15 +19,16 @@ def Formulario_posteo(request):
             msj = form.cleaned_data['titulo']   
             posteo = Post(titulo=data ['titulo'], subtitulo=data['subtitulo'], texto=data['texto'], autor=data['autor'], imagen=data['imagen_post'])
             posteo.save()
-            return render(request, "Indice/Plantillas/index.html", {'msj':f'Se creo el post "{msj}"', 'user_avatar':Buscar_Url_Avatar(request.user)})
+            return render(request, "Indice/Plantillas/index.html", {'msj':f'Se creo el post "{msj}"', 'user_avatar':buscar_url_avatar(request.user)})
         else:
-            return render(request, "Posts/Plantillas/formulario_post.html", {'form':form, 'user_avatar':Buscar_Url_Avatar(request.user)})
+            return render(request, "Posts/Plantillas/formulario_post.html", {'form':form, 'user_avatar':buscar_url_avatar(request.user)})
 
     form = Formulario_post()
-    return render(request, "Posts/Plantillas/formulario_post.html", {'form':form, 'user_avatar':Buscar_Url_Avatar(request.user)})
+    return render(request, "Posts/Plantillas/formulario_post.html", {'form':form, 'user_avatar':buscar_url_avatar(request.user)})
 
 
-def Lista_post(request):
+
+def lista_post(request):
     buscar_post = request.GET.get('titulo',None)
 
     if buscar_post is not None:
@@ -35,15 +37,15 @@ def Lista_post(request):
         posts = Post.objects.all()
         
     form = Buscar_post()
-    return render(request, "Posts/Plantillas/lista_posts.html", {'form':form,'posts':posts, 'user_avatar':Buscar_Url_Avatar(request.user)})
+    return render(request, "Posts/Plantillas/lista_posts.html", {'form':form,'posts':posts, 'user_avatar':buscar_url_avatar(request.user)})
 
 
-class Delete_post(DeleteView):
+class Delete_Post(DeleteView):
    model = Post
    template_name = 'Posts/Plantillas/Post_confirm_delete.html'
-   success_url = reverse_lazy('Lista_posts')
+   success_url = reverse_lazy('blog')
 
 
-class Detalle_post(DetailView):
+class Detalle_Post(DetailView):
     model = Post
     template_name = 'Posts/Plantillas/post_detail.html'

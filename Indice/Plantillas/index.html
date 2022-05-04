@@ -31,7 +31,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         {% if request.user.is_authenticated %}
-                            <li class="nav-item"><a class="nav-link" href={% url 'perfil'%}><img src="{{user_avatar}}" alt="Perfil" height="30"></a></li>   
+                            <li class="nav-item"><a class="nav-link" href={% url 'perfil'%}><img src="{{user_avatar}}" alt="Perfil" height="30"></a></li>  
                             <li class="nav-item"><a class="nav-link" href={% url 'formulario_post'%} >Subir post</a></li>
                             <li class="nav-item"><a class="nav-link" href={% url 'logout'%}>Logout </a></li>
                         {% else %}
@@ -51,9 +51,15 @@
             <div class="container px-lg-5">
                 <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
                     <div class="m-4 m-lg-5">
+                        {% if msj %}
                         <h1 class="display-5 fw-bold">
-                        Bienvenido!
+                            {{msj}}
                         </h1>
+                        {% else %}
+                        <h1 class="display-5 fw-bold">
+                            Bienvenido!
+                        </h1>
+                        {% endif %}
                             <p class="fs-4">Tu super blog de confianza para que puedas poner tus anecdotas más bizarras</p>
                     </div>
                 </div>
