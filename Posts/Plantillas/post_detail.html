@@ -6,9 +6,9 @@
       <div class="col-lg-8">
           <div class="card mb-6">
             {% if post.imagen %}
-            <img class="card-img-top" src="{{post.imagen.url}}"alt="" object-fit="contain" >
+            <img  src="{{post.imagen.url}}"alt="" width="300" height="300"  >
             {% else %}
-            <img class="card-img-top" src="https://pescadata-images.s3.us-west-1.amazonaws.com/1642026639704no-image.png" alt="..." object-fit="contain" >
+            <img  src="https://pescadata-images.s3.us-west-1.amazonaws.com/1642026639704no-image.png" alt="..." width="300" height="300">
             {% endif %}
             <div class="card-body">
                 <div class="small text-muted">{{post.fecha}}</div>

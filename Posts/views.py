@@ -40,12 +40,12 @@ def lista_post(request):
     return render(request, "Posts/Plantillas/lista_posts.html", {'form':form,'posts':posts, 'user_avatar':buscar_url_avatar(request.user)})
 
 
-class Delete_Post(DeleteView):
+class DeletePost(DeleteView):
    model = Post
    template_name = 'Posts/Plantillas/Post_confirm_delete.html'
    success_url = reverse_lazy('blog')
 
 
-class Detalle_Post(DetailView):
+class DetallePost(DetailView):
     model = Post
     template_name = 'Posts/Plantillas/post_detail.html'

@@ -54,9 +54,9 @@
     
     <h5>
         {% if mas_datos.imagen %}
-        <img src="{{mas_datos.imagen.url}}" alt="https://pescadata-images.s3.us-west-1.amazonaws.com/1642026639704no-image.png" object-fit="contain" >
+        <img src="{{mas_datos.imagen.url}}" alt="https://pescadata-images.s3.us-west-1.amazonaws.com/1642026639704no-image.png"  width="250" height="250" >
         {% else %}
-        <img src="https://pescadata-images.s3.us-west-1.amazonaws.com/1642026639704no-image.png" alt="..." object-fit="contain" />
+        <img src="https://pescadata-images.s3.us-west-1.amazonaws.com/1642026639704no-image.png" alt="..." width="250" height="250"/>
         {% endif %}
         <li>{{request.user.username}}</li>
         <li>{{request.user.first_name}}</li>
